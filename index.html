@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Danika</title>
+        <style>
+            body {
+                color: #032926;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                font-size: 4rem;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                z-index: -1;
+                background-color: #8fb0ff;
+            }
+
+            * {
+                font-family: monospace;
+                letter-spacing: 2px;
+                text-shadow: 4px 2px 0px #ff3dbe88;
+                word-break: break-word;
+            }
+
+            video {
+                margin: 0;
+                padding: 0;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            .text-shadow {
+            }
+
+            .container {
+                max-width: 640px;
+            }
+
+            @media only screen and (max-width: 640px) {
+                .container {
+                    max-width: 460px;
+                }
+            }
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+            }
+
+            .bg-trans {
+            }
+
+            .bg-video {
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+
+            .prompt-wrapper {
+            }
+
+            .prompt {
+            }
+
+            .text-em {
+                font-weight: bold;
+                letter-spacing: 1rem;
+                font-size: 5rem;
+            }
+
+            .prompt-btns {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 100px;
+            }
+
+            .prompt-btn {
+                display: block;
+                font-size: 4rem;
+                border-radius: 0;
+                background-color: white;
+                color: black;
+                transition: transform 0.5s;
+                cursor: pointer;
+                border: none;
+                padding: 1rem 2rem;
+                box-shadow: 8px 8px 0px 0px #ff3dbe88;
+            }
+
+            .prompt-btn:hover,.prompt-btn:active,.prompt-btn:focus {
+                transform: scale(1.5);
+            }
+
+            .no-trans {
+                font-family: serif;
+                color: white;
+                text-shadow: none;
+                font-weight: bold;
+            }
+
+            .bg-no-trans {
+                z-index: -1;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="prompt-wrapper wrapper bg-trans">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="prompt">Do you support</div>
+                    <div class="prompt text-em">ALEX?</div>
+                    <div class="prompt-btns">
+                        <button class="prompt-btn prompt-btn-yes">YES!</button>
+                        <button class="prompt-btn prompt-btn-no">no</button>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden support-yes wrapper bg-trans">
+            <video
+                autoplay
+                loop
+                class="bg-video"
+                src="/public/danika.mp4"
+                type="video/mp4"
+            ></video>
+            <div class="wrapper">
+                <div class="no-trans text-em">
+                    <h3>Fuck you niggerfaggot</h3>
+                    <h3>It's Danika</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden support-no wrapper no-trans bg-no-trans">Based.</div>
+
+        <script>
+            window.onload = () => {
+                const promptBtns = {
+                    yes: document.querySelector(".prompt-btn-yes"),
+                    no: document.querySelector(".prompt-btn-no"),
+                };
+
+                promptBtns.yes.onclick = () => {
+                    document
+                        .querySelector(".prompt-wrapper")
+                        .classList.add("hidden");
+                    document
+                        .querySelector(".support-yes")
+                        .classList.remove("hidden");
+
+                    const vid = document.querySelector("video");
+                    const intervalId = setInterval(() => {
+                        if (!vid.paused) {
+                            intervalId && clearInterval(intervalId);
+                        } else {
+                            vid.play();
+                        }
+                    }, 50);
+                };
+
+                promptBtns.no.onclick = () => {
+                    document
+                        .querySelector(".prompt-wrapper")
+                        .classList.add("hidden");
+                    document
+                        .querySelector(".support-no")
+                        .classList.remove("hidden");
+                };
+            };
+        </script>
+    </body>
+</html>
